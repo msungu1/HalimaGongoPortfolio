@@ -22,8 +22,13 @@ import {
   Sparkles,
   Users,
   X,
+  Youtube,
+
 } from "lucide-react";
 
+import {
+  Linkedin,
+} from "lucide-react";
  import halima1 from "@/images/rrr.jpg";
 import halima2 from "@/images/IMG_7757.jpg";
 import halima3 from "@/images/WhatsApp Image 2026-09-22 at 23.08.13.jpeg";
@@ -35,8 +40,8 @@ const heroImages = [
   halima4,
 ];
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/home" },
+  { label: "About Me", href: "/about" },
   { label: "Work", href: "#work" },
   { label: "Photography", href: "#photography" },
   { label: "Career", href: "#career" },
@@ -200,6 +205,12 @@ const photoTiles = [
     meta: "Sample image placeholder",
     tone: "placeholder-photo-six",
   },
+];
+const stats = [
+  { value: "13+", label: "Years in media", note: "Reporting since 2013" },
+  { value: "4", label: "Major outlets", note: "DW · RFI · VOA · NTV" },
+  { value: "4", label: "Awards & recognitions", note: "2014 – 2023" },
+  { value: "3", label: "Qualifications", note: "Diploma · BA · LLM" },
 ];
 
 const photoPrograms = [
@@ -471,64 +482,121 @@ export default function Home() {
   return (
     <div className="site-shell">
 <header
-  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-    scrolled
-      ? "bg-white/90 backdrop-blur-xl shadow-[0_8px_40px_rgba(15,23,42,0.08)] border-b border-slate-200/70"
-      : "bg-transparent"
-  }`}
+  className={`
+    fixed left-0 right-0 top-0 z-50
+    transition-all duration-500 ease-out
+    ${
+      scrolled
+        ? "border-b border-slate-200/80 bg-white/95 shadow-[0_10px_40px_rgba(15,23,42,0.07)] backdrop-blur-2xl"
+        : "border-b border-white/10 bg-slate-950/10 backdrop-blur-md"
+    }
+  `}
 >
-  <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-    <div className="flex h-[82px] items-center justify-between">
+  <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10 xl:px-12">
+    <div className="flex h-[76px] items-center justify-between">
 
-      {/* BRAND */}
+      {/* ================= BRAND ================= */}
       <a
         href="#home"
         onClick={() => setMenuOpen(false)}
         aria-label="Halima Gongo home"
-        className="group flex items-center gap-3"
+        className="group flex items-center gap-3.5"
       >
-        {/* HG Logo */}
-        <span
-          className="
-            relative flex h-11 w-11 items-center justify-center
-            rounded-2xl
-            bg-slate-950
-            text-white
-            text-sm font-black tracking-tight
-            shadow-lg shadow-slate-950/20
-            transition-all duration-300
-            group-hover:-rotate-3 group-hover:scale-105
-          "
-        >
-          HG
+        {/* HG MARK */}
+        <div className="relative">
+          <span
+            className={`
+              relative flex h-11 w-11 items-center justify-center
+              overflow-hidden rounded-xl
+              text-[13px] font-black tracking-[-0.04em]
+              transition-all duration-500
+              group-hover:-rotate-3 group-hover:scale-105
+              ${
+                scrolled
+                  ? "bg-slate-950 text-white shadow-lg shadow-slate-950/15"
+                  : "bg-white text-slate-950 shadow-lg shadow-black/10"
+              }
+            `}
+          >
+            HG
 
-          {/* Accent dot */}
-          <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-orange-500 ring-4 ring-white" />
-        </span>
+            {/* subtle shine */}
+            <span
+              className="
+                absolute inset-0
+                -translate-x-full
+                bg-gradient-to-r
+                from-transparent via-white/20 to-transparent
+                transition-transform duration-700
+                group-hover:translate-x-full
+              "
+            />
+          </span>
 
-        {/* Name */}
+          {/* orange accent */}
+          <span
+            className="
+              absolute -right-1 -top-1
+              h-3.5 w-3.5
+              rounded-full
+              bg-orange-500
+              ring-[3px] ring-white
+              shadow-sm shadow-orange-500/40
+            "
+          />
+        </div>
+
+        {/* BRAND TEXT */}
         <div className="hidden sm:block">
-          <p
-            className={`text-sm font-black tracking-[0.18em] transition-colors ${
-              scrolled ? "text-slate-950" : "text-white"
-            }`}
-          >
-            HALIMA GONGO
-          </p>
+          <div className="flex items-center gap-2">
+            <p
+              className={`
+                text-[13px] font-black
+                tracking-[0.16em]
+                transition-colors duration-300
+                ${
+                  scrolled
+                    ? "text-slate-950"
+                    : "text-white"
+                }
+              `}
+            >
+              HALIMA GONGO
+            </p>
+
+            <span
+              className={`
+                hidden h-1 w-1 rounded-full sm:block
+                ${
+                  scrolled
+                    ? "bg-orange-500"
+                    : "bg-orange-400"
+                }
+              `}
+            />
+          </div>
 
           <p
-            className={`mt-0.5 text-[10px] font-medium uppercase tracking-[0.25em] ${
-              scrolled ? "text-slate-500" : "text-white/60"
-            }`}
+            className={`
+              mt-0.5 text-[9px]
+              font-medium uppercase
+              tracking-[0.24em]
+              transition-colors duration-300
+              ${
+                scrolled
+                  ? "text-slate-500"
+                  : "text-white/60"
+              }
+            `}
           >
-            Media • Film • Advocacy
+            Storyteller · Journalist · Filmmaker
           </p>
         </div>
       </a>
 
-      {/* DESKTOP NAVIGATION */}
+      {/* ================= DESKTOP NAV ================= */}
       <nav
-        className="hidden lg:flex items-center gap-2"
+        className="hidden items-center gap-1 lg:flex"
         aria-label="Primary navigation"
       >
         {navItems.map((item) => (
@@ -536,123 +604,187 @@ export default function Home() {
             key={item.href}
             href={item.href}
             className={`
-              group relative rounded-full px-4 py-2.5
-              text-[13px] font-semibold
+              group relative
+              rounded-full
+              px-4 py-2.5
+              text-[12px]
+              font-semibold
+              tracking-wide
               transition-all duration-300
               ${
                 scrolled
-                  ? "text-slate-600 hover:text-slate-950"
-                  : "text-white/80 hover:text-white"
+                  ? "text-slate-600 hover:bg-slate-950/[0.04] hover:text-slate-950"
+                  : "text-white/75 hover:bg-white/10 hover:text-white"
               }
             `}
           >
             {item.label}
 
-            {/* Animated underline */}
+            {/* animated underline */}
             <span
               className={`
-                absolute bottom-1.5 left-4 right-4 h-[2px]
-                origin-left scale-x-0
+                absolute
+                bottom-1.5
+                left-4 right-4
+                h-[2px]
+                origin-left
+                scale-x-0
                 rounded-full
                 transition-transform duration-300
                 group-hover:scale-x-100
-                ${scrolled ? "bg-orange-500" : "bg-white"}
+                ${
+                  scrolled
+                    ? "bg-orange-500"
+                    : "bg-orange-400"
+                }
               `}
             />
           </a>
         ))}
       </nav>
 
-      {/* RIGHT SIDE */}
-      <div className="flex items-center gap-3">
+      {/* ================= RIGHT SIDE ================= */}
+      <div className="flex items-center gap-2.5">
 
-        {/* Let's Talk */}
+        {/* LET'S TALK */}
         <a
           href="#contact"
           className="
-            group hidden sm:inline-flex items-center gap-2
+            group hidden
+            items-center gap-2
             rounded-full
             bg-orange-500
-            px-5 py-3
-            text-[13px] font-bold text-white
+            px-5 py-2.5
+            text-[12px]
+            font-bold
+            tracking-wide
+            text-white
             shadow-lg shadow-orange-500/20
             transition-all duration-300
             hover:-translate-y-0.5
             hover:bg-orange-600
-            hover:shadow-xl hover:shadow-orange-500/30
+            hover:shadow-xl
+            hover:shadow-orange-500/30
+            sm:inline-flex
           "
         >
           Let's talk
 
           <ArrowUpRight
-            size={16}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            size={15}
+            strokeWidth={2.5}
+            className="
+              transition-transform duration-300
+              group-hover:-translate-y-0.5
+              group-hover:translate-x-0.5
+            "
           />
         </a>
 
-        {/* Mobile menu button */}
+        {/* MOBILE MENU BUTTON */}
         <button
+          type="button"
+          aria-label={
+            menuOpen
+              ? "Close navigation"
+              : "Open navigation"
+          }
+          aria-expanded={menuOpen}
+          onClick={() =>
+            setMenuOpen((open) => !open)
+          }
           className={`
-            flex lg:hidden h-11 w-11 items-center justify-center
-            rounded-full border
+            flex h-11 w-11
+            items-center justify-center
+            rounded-full
+            border
             transition-all duration-300
             ${
               scrolled
-                ? "border-slate-200 bg-white text-slate-950 hover:bg-slate-100"
+                ? "border-slate-200 bg-white text-slate-950 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-600"
                 : "border-white/20 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
             }
           `}
-          type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? <X size={21} /> : <Menu size={21} />}
+          <span
+            className="
+              transition-transform duration-300
+            "
+          >
+            {menuOpen ? (
+              <X size={20} strokeWidth={2} />
+            ) : (
+              <Menu size={20} strokeWidth={2} />
+            )}
+          </span>
         </button>
       </div>
     </div>
   </div>
 
-  {/* MOBILE NAVIGATION */}
+  {/* ================= MOBILE MENU ================= */}
   <div
     className={`
-      lg:hidden overflow-hidden transition-all duration-500
+      overflow-hidden
+      transition-all duration-500 ease-out
+      lg:hidden
       ${
         menuOpen
-          ? "max-h-[500px] opacity-100"
-          : "max-h-0 opacity-0 pointer-events-none"
+          ? "max-h-[700px] opacity-100"
+          : "pointer-events-none max-h-0 opacity-0"
       }
     `}
   >
     <nav
       className="
-        mx-4 mb-4
+        mx-3 mb-3
         overflow-hidden
-        rounded-3xl
-        border border-slate-200
+        rounded-[28px]
+        border border-slate-200/80
         bg-white
-        shadow-2xl shadow-slate-950/10
+        shadow-[0_20px_60px_rgba(15,23,42,0.14)]
       "
       aria-label="Mobile navigation"
     >
       <div className="p-3">
+
+        {/* mobile navigation links */}
         {navItems.map((item, index) => (
           <a
             key={item.href}
             href={item.href}
             onClick={() => setMenuOpen(false)}
             className="
-              group flex items-center justify-between
+              group flex items-center
+              justify-between
               rounded-2xl
               px-5 py-4
-              text-sm font-semibold text-slate-700
+              text-sm
+              font-semibold
+              text-slate-700
               transition-all duration-300
-              hover:bg-slate-50 hover:text-slate-950
+              hover:bg-slate-50
+              hover:text-slate-950
             "
           >
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-orange-500">
-                0{index + 1}
+
+              {/* number */}
+              <span
+                className="
+                  flex h-7 w-7
+                  items-center justify-center
+                  rounded-full
+                  bg-orange-50
+                  text-[9px]
+                  font-black
+                  text-orange-500
+                  transition-all duration-300
+                  group-hover:bg-orange-500
+                  group-hover:text-white
+                "
+              >
+                {String(index + 1).padStart(2, "0")}
               </span>
 
               <span>{item.label}</span>
@@ -660,8 +792,9 @@ export default function Home() {
 
             <ArrowUpRight
               size={17}
+              strokeWidth={2}
               className="
-                text-slate-400
+                text-slate-300
                 transition-all duration-300
                 group-hover:-translate-y-0.5
                 group-hover:translate-x-0.5
@@ -671,24 +804,54 @@ export default function Home() {
           </a>
         ))}
 
-        {/* Mobile CTA */}
+        {/* mobile CTA */}
         <div className="mt-2 border-t border-slate-100 pt-3">
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
             className="
-              flex items-center justify-center gap-2
+              group flex
+              items-center
+              justify-center
+              gap-2
               rounded-2xl
               bg-slate-950
               px-5 py-4
-              text-sm font-bold text-white
+              text-sm
+              font-bold
+              text-white
+              shadow-lg shadow-slate-950/10
               transition-all duration-300
               hover:bg-orange-500
+              hover:shadow-orange-500/20
             "
           >
             Let's work together
-            <ArrowUpRight size={17} />
+
+            <ArrowUpRight
+              size={17}
+              className="
+                transition-transform duration-300
+                group-hover:-translate-y-0.5
+                group-hover:translate-x-0.5
+              "
+            />
           </a>
+        </div>
+
+        {/* small mobile descriptor */}
+        <div className="px-4 pb-2 pt-4 text-center">
+          <p
+            className="
+              text-[9px]
+              font-medium
+              uppercase
+              tracking-[0.25em]
+              text-slate-400
+            "
+          >
+            Stories · People · Impact
+          </p>
         </div>
       </div>
     </nav>
@@ -697,7 +860,6 @@ export default function Home() {
 
       <main>
                 {/* ───────────── HOME───────────── */}
-
 
         <section
   id="home"
@@ -1193,9 +1355,6 @@ export default function Home() {
   </a>
 </section>
 
-        {/* ───────────── ABOUT ───────────── */}
-
-
         {/* ───────────── PHOTOGRAPHY ───────────── */}
 <section
   id="photography"
@@ -1510,11 +1669,13 @@ export default function Home() {
 </section>
 
         {/* ───────────── COMMUNITY ───────────── */}
+
 <section className="relative overflow-hidden bg-white py-24 md:py-32">
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
+    {/* Section Header */}
     <div className="mb-10 flex items-center gap-4">
-      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-xs font-bold text-white">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-950 text-xs font-bold text-white">
         05
       </span>
 
@@ -1525,8 +1686,9 @@ export default function Home() {
       <div className="h-px flex-1 bg-slate-200" />
     </div>
 
+    {/* Title */}
     <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-      <h2 className="text-5xl font-black leading-[0.95] tracking-[-0.04em] text-slate-950 sm:text-6xl lg:text-7xl">
+      <h2 className="max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.04em] text-slate-950 sm:text-6xl lg:text-7xl">
         Work that reaches
         <span className="block font-serif font-normal italic text-orange-500">
           beyond the byline.
@@ -1540,90 +1702,171 @@ export default function Home() {
       />
     </div>
 
+    {/* Community Cards */}
     <div className="mt-16 grid gap-6 lg:grid-cols-2">
 
-      {/* Card 1 */}
-      <article className="group relative overflow-hidden rounded-[2rem] bg-orange-500 p-8 text-white md:p-10">
-        <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-white/20" />
+      {/* =========================
+          CARD 01
+      ========================== */}
+      <article className="group relative overflow-hidden rounded-[2rem] bg-orange-500 p-8 text-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl md:p-10">
+
+        {/* Decorative Circle */}
+        <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-white/20 transition-transform duration-700 group-hover:scale-110" />
+
+        <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-white/5" />
 
         <div className="relative">
-          <span className="text-xs font-bold tracking-[0.2em] text-white/50">
-            01
-          </span>
 
-          <h3 className="mt-8 text-3xl font-black md:text-4xl">
+          {/* Number */}
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold tracking-[0.2em] text-white/60">
+              01
+            </span>
+
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
+              <HeartHandshake size={18} strokeWidth={1.5} />
+            </div>
+          </div>
+
+          {/* Title */}
+          <h3 className="mt-8 max-w-xl text-3xl font-black leading-tight md:text-4xl">
             G for Girls Initiative
           </h3>
 
-          <p className="mt-3 font-semibold text-white/80">
+          {/* Role */}
+          <p className="mt-3 font-semibold text-white/85">
             Board Member · Kwale County, Kenya
           </p>
 
-          <p className="mt-7 max-w-xl text-base leading-8 text-white/75">
+          {/* Description */}
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/80">
             Coordinated campaigns on gender-based violence, peace, education,
             and environmental awareness in rural villages.
           </p>
 
+          {/* Social Link */}
           <a
             href="https://www.linkedin.com/company/gforgirls-initiative/posts/?feedView=all"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-orange-600 transition-all hover:-translate-y-1"
+            aria-label="View G for Girls Initiative LinkedIn updates"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-bold text-orange-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-slate-950 hover:text-white hover:shadow-xl"
           >
-            View updates
-            <ArrowUpRight size={14} />
+            <Linkedin size={17} strokeWidth={2.2} />
+
+            <span>View LinkedIn updates</span>
+
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </a>
 
+          {/* Divider */}
           <div className="mt-10 h-px bg-white/20" />
 
-          <span className="mt-5 block text-xs font-bold uppercase tracking-[0.15em] text-white/60">
-            Gender · Peace · Education
-          </span>
+          {/* Tags */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Gender
+            </span>
+
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Peace
+            </span>
+
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Education
+            </span>
+          </div>
+
         </div>
       </article>
 
-      {/* Card 2 */}
-      <article className="group relative overflow-hidden rounded-[2rem] bg-sky-600 p-8 text-white md:p-10">
-        <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full border border-white/15" />
+
+      {/* =========================
+          CARD 02
+      ========================== */}
+      <article className="group relative overflow-hidden rounded-[2rem] bg-sky-600 p-8 text-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl md:p-10">
+
+        {/* Decorative Circle */}
+        <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full border border-white/15 transition-transform duration-700 group-hover:scale-110" />
+
+        <div className="absolute -left-20 -top-20 h-48 w-48 rounded-full bg-white/5" />
 
         <div className="relative">
-          <span className="text-xs font-bold tracking-[0.2em] text-white/50">
-            02
-          </span>
 
-          <h3 className="mt-8 text-3xl font-black md:text-4xl">
+          {/* Number */}
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold tracking-[0.2em] text-white/60">
+              02
+            </span>
+
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
+              <HeartHandshake size={18} strokeWidth={1.5} />
+            </div>
+          </div>
+
+          {/* Title */}
+          <h3 className="mt-8 max-w-xl text-3xl font-black leading-tight md:text-4xl">
             Kwale Sports Excellence &amp; Save Our Sables CBOs
           </h3>
 
-          <p className="mt-3 font-semibold text-white/80">
+          {/* Role */}
+          <p className="mt-3 font-semibold text-white/85">
             Team Lead · Kwale, Kenya
           </p>
 
-          <p className="mt-7 max-w-xl text-base leading-8 text-white/75">
+          {/* Description */}
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/80">
             Led community conservation efforts for sable antelopes and
             promoted biodiversity awareness campaigns.
           </p>
 
+          {/* Social Link */}
           <a
             href="https://www.linkedin.com/feed/update/urn:li:activity:7188160202993516544/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-sky-600 transition-all hover:-translate-y-1"
+            aria-label="View Kwale Sports Excellence and Save Our Sables LinkedIn post"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-bold text-sky-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-slate-950 hover:text-white hover:shadow-xl"
           >
-            View post
-            <ArrowUpRight size={14} />
+            <Linkedin size={17} strokeWidth={2.2} />
+
+            <span>View LinkedIn post</span>
+
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </a>
 
+          {/* Divider */}
           <div className="mt-10 h-px bg-white/20" />
 
-          <span className="mt-5 block text-xs font-bold uppercase tracking-[0.15em] text-white/60">
-            Conservation · Biodiversity
-          </span>
+          {/* Tags */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Conservation
+            </span>
+
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Biodiversity
+            </span>
+
+            <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white/80">
+              Community
+            </span>
+          </div>
+
         </div>
       </article>
+
     </div>
   </div>
 </section>
+
+
 
         {/* ───────────── AWARDS & EDUCATION ───────────── */}
 <section className="relative overflow-hidden bg-slate-100 py-24 md:py-32">
@@ -2053,69 +2296,317 @@ export default function Home() {
 
       </main>
    
-<footer className="border-t border-white/10 bg-slate-950 text-white">
+<footer className="relative overflow-hidden border-t border-white/10 bg-slate-950 text-white">
 
-  {/* Main footer row */}
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
-    <div className="flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
+        {/* Ambient background glow */}
+        <div className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-orange-500/10 blur-3xl" />
 
-      {/* Logo */}
-      <a
-        href="#home"
-        className="group flex items-center gap-4"
-      >
-        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-sm font-black text-slate-950 transition-all duration-300 group-hover:rotate-3 group-hover:bg-orange-500 group-hover:text-white">
-          HG
-        </span>
+        <div className="pointer-events-none absolute -bottom-48 right-0 h-[28rem] w-[28rem] rounded-full bg-sky-500/5 blur-3xl" />
 
-        <span>
-          <span className="block text-sm font-bold tracking-wide">
-            HALIMA GONGO
-          </span>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
-          <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-white/30">
-            Media · Film · Advocacy
-          </span>
-        </span>
-      </a>
+          {/* Main footer */}
+          <div className="grid gap-14 py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
 
-      {/* Description */}
-      <p className="max-w-md text-sm leading-6 text-white/35 md:text-center">
-        Documentary storyteller, photographer &amp; journalist — East Africa.
-      </p>
+            {/* BRAND */}
+            <div className="lg:col-span-2">
 
-      {/* Back to top */}
-      <a
-        href="#home"
-        className="group inline-flex items-center gap-2 text-sm font-bold text-white/60 transition-colors duration-300 hover:text-orange-400"
-      >
-        Back to top
+              <a
+                href="#home"
+                className="group inline-flex items-center gap-4"
+              >
+                {/* Logo */}
+                <span
+                  className="
+                    flex h-14 w-14 items-center justify-center
+                    rounded-2xl
+                    bg-white
+                    text-base font-black tracking-tight text-slate-950
+                    shadow-xl shadow-black/20
+                    transition-all duration-500
+                    group-hover:-rotate-3
+                    group-hover:bg-orange-500
+                    group-hover:text-white
+                    group-hover:shadow-orange-500/20
+                  "
+                >
+                  HG
+                </span>
 
-        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-orange-400">
-          <ArrowUpRight
-            size={15}
-            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-        </span>
-      </a>
+                {/* Name */}
+                <span>
+                  <span className="block text-base font-black tracking-[0.12em]">
+                    HALIMA GONGO
+                  </span>
 
-    </div>
+                  <span className="mt-1 block text-[10px] uppercase tracking-[0.25em] text-orange-400/70">
+                    Media · Film · Advocacy
+                  </span>
+                </span>
+              </a>
 
-    {/* Bottom footer */}
-    <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-[11px] text-white/25 sm:flex-row sm:items-center sm:justify-between">
+              <p className="mt-7 max-w-lg text-sm leading-7 text-white/45">
+                Documentary storyteller, photographer and journalist working
+                across East Africa — telling human-centred stories that
+                amplify voices, inspire conversations and create meaningful
+                impact.
+              </p>
 
-      <span>
-        © {new Date().getFullYear()} Halima Gongo
-      </span>
+              {/* Social links */}
+              <div className="mt-8 flex items-center gap-3">
 
-      <span>
-        Made for stories that matter.
-      </span>
+                {/* YouTube */}
+                <a
+                  href="https://www.youtube.com/@iC-AFRICA"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="YouTube"
+                  className="
+                    flex h-11 w-11 items-center justify-center
+                    rounded-full
+                    border border-white/10
+                    bg-white/[0.03]
+                    text-white/50
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:border-orange-400/50
+                    hover:bg-orange-500
+                    hover:text-white
+                    hover:shadow-lg
+                    hover:shadow-orange-500/20
+                  "
+                >
+                  <Youtube size={17} strokeWidth={1.8} />
+                </a>
 
-    </div>
-  </div>
+                {/* Email */}
+                <a
+                  href="mailto:gongohalima@gmail.com"
+                  aria-label="Email Halima Gongo"
+                  className="
+                    flex h-11 w-11 items-center justify-center
+                    rounded-full
+                    border border-white/10
+                    bg-white/[0.03]
+                    text-white/50
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:border-orange-400/50
+                    hover:bg-orange-500
+                    hover:text-white
+                    hover:shadow-lg
+                    hover:shadow-orange-500/20
+                  "
+                >
+                  <Mail size={17} strokeWidth={1.8} />
+                </a>
 
-</footer>
+                {/* Phone */}
+                <a
+                  href="tel:+254715490179"
+                  aria-label="Call Halima Gongo"
+                  className="
+                    flex h-11 w-11 items-center justify-center
+                    rounded-full
+                    border border-white/10
+                    bg-white/[0.03]
+                    text-white/50
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    hover:border-orange-400/50
+                    hover:bg-orange-500
+                    hover:text-white
+                    hover:shadow-lg
+                    hover:shadow-orange-500/20
+                  "
+                >
+                  <Phone size={17} strokeWidth={1.8} />
+                </a>
+
+              </div>
+            </div>
+
+            {/* EXPLORE */}
+            <div>
+              <h3 className="mb-6 text-[11px] font-bold uppercase tracking-[0.25em] text-white/30">
+                Explore
+              </h3>
+
+              <nav className="flex flex-col gap-3.5">
+                {[
+                  ["Home", "#home"],
+                  ["About Me", "/about"],
+                  ["Work", "#work"],
+                  ["Photography", "#photography"],
+                  ["Awards", "#awards"],
+                  ["Education", "#education"],
+                  ["Contact", "#contact"],
+                ].map(([label, href]) => (
+                  <a
+                    key={href}
+                    href={href}
+                    className="
+                      group flex w-fit items-center gap-2
+                      text-sm text-white/50
+                      transition-all duration-300
+                      hover:text-white
+                    "
+                  >
+                    <span
+                      className="
+                        h-px w-0
+                        bg-orange-400
+                        transition-all duration-300
+                        group-hover:w-4
+                      "
+                    />
+
+                    {label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* CONTACT */}
+            <div>
+              <h3 className="mb-6 text-[11px] font-bold uppercase tracking-[0.25em] text-white/30">
+                Get in touch
+              </h3>
+
+              <div className="space-y-5">
+
+                {/* Email */}
+                <a
+                  href="mailto:gongohalima@gmail.com"
+                  className="group flex items-start gap-3"
+                >
+                  <Mail
+                    size={17}
+                    className="mt-0.5 shrink-0 text-orange-400"
+                    strokeWidth={1.7}
+                  />
+
+                  <span className="text-sm text-white/55 transition-colors duration-300 group-hover:text-orange-400">
+                    gongohalima@gmail.com
+                  </span>
+                </a>
+
+                {/* Phone */}
+                <a
+                  href="tel:+254715490179"
+                  className="group flex items-start gap-3"
+                >
+                  <Phone
+                    size={17}
+                    className="mt-0.5 shrink-0 text-orange-400"
+                    strokeWidth={1.7}
+                  />
+
+                  <span className="text-sm text-white/55 transition-colors duration-300 group-hover:text-orange-400">
+                    +254 715 490 179
+                  </span>
+                </a>
+
+                {/* Location */}
+                <div className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-orange-400 shadow-lg shadow-orange-400/40" />
+
+                  <span className="text-sm leading-6 text-white/35">
+                    Kenya · East Africa
+                  </span>
+                </div>
+
+              </div>
+
+              {/* Back to top */}
+              <a
+                href="#home"
+                className="
+                  group mt-8 inline-flex items-center gap-3
+                  text-sm font-semibold text-white/55
+                  transition-colors duration-300
+                  hover:text-orange-400
+                "
+              >
+                Back to top
+
+                <span
+                  className="
+                    flex h-9 w-9 items-center justify-center
+                    rounded-full
+                    border border-white/10
+                    transition-all duration-300
+                    group-hover:-translate-y-1
+                    group-hover:border-orange-400/60
+                    group-hover:bg-orange-400
+                    group-hover:text-slate-950
+                  "
+                >
+                  <ArrowUpRight
+                    size={15}
+                    className="
+                      transition-transform duration-300
+                      group-hover:-translate-y-0.5
+                      group-hover:translate-x-0.5
+                    "
+                  />
+                </span>
+              </a>
+            </div>
+          </div>
+
+          {/* SIGNATURE STATEMENT */}
+          <div className="border-y border-white/10 py-9">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+
+              <div>
+                <p className="text-3xl font-light tracking-tight text-white/85 md:text-4xl">
+                  Stories that{" "}
+                  <span className="font-serif italic text-orange-400">
+                    matter.
+                  </span>
+                </p>
+
+                <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.25em] text-white/25">
+                  Documentary · Photography · Journalism
+                </p>
+              </div>
+
+              <div className="hidden h-12 w-px bg-white/10 md:block" />
+
+              <p className="max-w-xs text-sm leading-6 text-white/30 md:text-right">
+                Working across East Africa to document people, communities,
+                culture and stories that deserve to be heard.
+              </p>
+            </div>
+          </div>
+
+          {/* BOTTOM BAR */}
+          <div
+            className="
+              flex flex-col gap-4
+              py-6
+              text-[11px] text-white/25
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+            "
+          >
+            <span>
+              © {new Date().getFullYear()} Halima Gongo. All rights reserved.
+            </span>
+
+            <span className="flex items-center gap-2">
+              Made for stories that matter.
+
+              <span className="h-1 w-1 rounded-full bg-orange-400" />
+
+              East Africa
+            </span>
+          </div>
+
+        </div>
+      </footer>
 
 
     </div>
